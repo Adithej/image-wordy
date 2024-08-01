@@ -6,8 +6,9 @@ import "./index.css";
 import axios from "axios";
 import { AuthProvider } from "./context/AuthContext.tsx";
 
-// axios.defaults.baseURL = "http://localhost:8800/api/v1";
-axios.defaults.baseURL = "https://backend-wordy.netlify.app/api/v1";
+const base = import.meta.env.VITE_REACT_APP_BASE_URL;
+axios.defaults.baseURL = base || "http://localhost:8800/api/v1";
+// axios.defaults.baseURL = "https://backend-wordy.netlify.app/api/v1";
 axios.defaults.withCredentials = true;
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
