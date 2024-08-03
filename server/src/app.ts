@@ -13,6 +13,7 @@ const corsOrigin = process.env.FRONTEND_ORIGIN;
 
 app.use(cors({
     origin: corsOrigin,
+    methods: ["POST", "GET"],
     credentials: true
 }))
 
