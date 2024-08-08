@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from "express";
+import { Request, Response, NextFunction, CookieOptions } from "express";
 import jwt from "jsonwebtoken";
 import { COOKIE_NAME } from "./constants.js";
 
@@ -8,6 +8,16 @@ export const createToken = (id: string, email: string, expiresIn: string) => {
     expiresIn,
     });
     return token;
+};
+
+export const cookieOptions: CookieOptions = {
+    path: "/",
+    expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 days
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+    domain: "server-wz9u.onrender.com",
+    signed: true,
 };
 
 export const verifyToken = async (req: Request, res: Response, next: NextFunction) => {
@@ -22,6 +32,8 @@ export const verifyToken = async (req: Request, res: Response, next: NextFunctio
         res.locals.jwtData = decoded;
         next();
     } catch (error) {
-        return res.status(401).json({ message: "Token Invalid" });
+        // If token is expired or invalid, clear the cookie
+        res.clearCookie(COOKIE_NAME, cookieOptions);
+        return res.status(401).json({ message: "Token Invalid or Expired" });
     }
 };

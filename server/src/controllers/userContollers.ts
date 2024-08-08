@@ -1,8 +1,8 @@
-import { NextFunction, Request, Response } from "express";
+import { NextFunction, Request, Response} from "express";
 import { User } from "../models/User.js";
 import { hash, compare } from "bcrypt";
 import { COOKIE_NAME } from "../utils/constants.js";
-import { createToken } from "../utils/manageTokens.js";
+import { createToken, cookieOptions } from "../utils/manageTokens.js";
 
 export const getAllUsers = async (
     req: Request,
@@ -16,13 +16,6 @@ export const getAllUsers = async (
         console.log(error);
         return res.status(200).json({ message: "ERROR", cause: error.message });
     }
-};
-
-
-const cookieOptions = {
-    path: "/",
-    expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 days
-    domain: null,
 };
 
 export const userSignup = async (
