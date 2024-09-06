@@ -2,7 +2,14 @@
 
 ## Build with React+TypeScipt.js , Node+Express.js, MongoDB, Tesseract.js, OpenAI API.
 
-Check-out the beta version: [Image Wordy](https://image-wordy-1.onrender.com).
+Go to: [Image Wordy](https://image-wordy-1.onrender.com) and login with the following credentials:
+
+```
+
+email : adithya@test.com
+password : 123456
+
+```
 
 ### UI credits: Aceternity UI
 
