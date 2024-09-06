@@ -2,6 +2,8 @@
 
 ## Build with React+TypeScipt.js , Node+Express.js, MongoDB, Tesseract.js, OpenAI API.
 
+Check-out the beta version: [Image Wordy](https://image-wordy-1.onrender.com).
+
 ### UI credits: Aceternity UI
 
 _Image Wordy is a simple chatbot that can take an image and text as input, and analyze the text using
